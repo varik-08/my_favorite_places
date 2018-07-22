@@ -13,12 +13,12 @@
             <div class="main">
                 <div class="field">
                     <label for="name">Имя</label>
-                    <input type="text" name="name" /><br>
+                    <input type="text" name="name" value="{{old('name')}}"><br>
                 </div>
 
                 <div class="field">
                     <label for="type">Тип</label>
-                    <select name="type">
+                    <select name="type" value="{{old('type')}}">
                     <option disabled>Выберите тип</option>
                     @foreach ($types as $type)
                         <option value="{{$type->id}}">{{$type->name}}</option>;
@@ -29,7 +29,7 @@
 
                 <div class="field">
                     <label for="about">Описание</label>
-                    <textarea name="about"></textarea>
+                    <textarea name="about">{{{ old('about') }}}</textarea>
                 </div>
 
                 <br>

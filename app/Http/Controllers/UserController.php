@@ -14,8 +14,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $myplase = Place::all();
-        return view('index',compact(['myplase']));
+        $myplaces = Place::all();
+        return view('index',compact(['myplaces']));
     }
 
     public function place($id = null)
@@ -36,7 +36,8 @@ class UserController extends Controller
     {
         Place::insert(['name'=>$request->input('name'), 'type'=>$request->
         input('type'), 'about'=>$request->input('about')]);
-        return view('index');
+        $myplaces = Place::all();
+        return view('index',compact(['myplaces']));
     }
 
     public function addPhotos(Request $request)

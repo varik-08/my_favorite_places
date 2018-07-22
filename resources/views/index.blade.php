@@ -3,7 +3,7 @@
     <th>Место</th>
     <th>Тип</th>
     </tr>
-    @foreach ($myplase as $place )
+    @foreach ($myplaces as $place )
         <tr>
          <td><a href = "/places/{{$place->id}}">{{$place->name}}</a></td>
          <td>{{$place->typ}}</td>
@@ -19,7 +19,7 @@
                 <label for="type">Место</label>
                 <select name="id">
                 <option disabled>Выберите место</option>
-                @foreach ($myplase as $place)
+                @foreach ($myplaces as $place)
                     <option value="{{$place->id}}">{{$place->name}}</option>
                 @endforeach
                 </select>
