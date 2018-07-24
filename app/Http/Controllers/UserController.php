@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Type;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\AddPhotoRequest;
+
 
 class UserController extends Controller
 {
@@ -34,32 +36,15 @@ class UserController extends Controller
 
     public function getCreateForm(UserRequest $request)
     {
-        Place::insert(['name'=>$request->input('name'), 'type'=>$request->
-        input('type'), 'about'=>$request->input('about')]);
+        //Place::insert(['name'=>$request->input('name'), 'type'=>$request->
+        //input('type'), 'about'=>$request->input('about')]);
+        Place::create($request->all());
         $myplaces = Place::all();
         return view('index',compact(['myplaces']));
     }
 
-    public function addPhotos(Request $request)
+    public function addPhotos(AddPhotoRequest $request)
     {
         return redirect('/places/'.$request->input('id').'/photos/add');
-    }
-
-    public function addPhotosIdGet($id)
-    {
-        $photos = Filesplace::where('idPlace',$id)->orderBy('created_at','desc')->get();
-        return view('addPhoto', compact(['id','photos']));
-    }
-
-    public function addPhotosIdPost(Request $request, $id)
-    {
-        $place = Place::find($id);
-        Filesplace::insert([
-            'idPlace'=>$id,
-            'fileName'=>$request->file('image')->hashName(),
-            'filePath'=>'/'.$place->name.'/'.$request->file('image')->hashName(),
-            'created_at'=> Carbon::now()]);
-        $request->file('image')->store('/'.$place->name.'/', 'public');
-        return redirect('/places/'.$id.'/photos/add');
     }
 }

@@ -10,7 +10,7 @@
         </tr>
     @endforeach
 </table>
-
+---------------------------------------------------------------
 <form action="/places/photos/add" method="post">
     @csrf
     <h4>Добавить фотографии к месту</h4>
@@ -28,5 +28,14 @@
         <button type="submit">Добавить</button>
     </div>
 </form>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+----------------------------------------------------------------
 <h3><a href="/places/create">Добавить новое место</a></h3>

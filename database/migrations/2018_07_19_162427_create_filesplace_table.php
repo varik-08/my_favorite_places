@@ -13,7 +13,7 @@ class CreateFilesplaceTable extends Migration
      */
     public function up()
     {
-        Schema::create('filesplace', function (Blueprint $table) {
+        Schema::create('filesplaces', function (Blueprint $table) {
             $table->integer('idPlace');
             $table->string('fileName');
             $table->primary(['idPlace', 'fileName']);
