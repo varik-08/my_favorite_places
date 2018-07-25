@@ -11,6 +11,6 @@ class Place extends Model
     public $timestamps = false;
     public function getTypAttribute()
     {
-        return Type::where('id', '=', $this->type)->value('name');
+        return Type::find($this->type)->value('name');
     }
 }
