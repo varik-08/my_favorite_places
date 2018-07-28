@@ -1,20 +1,17 @@
-<html>
-<head>
-    @include('master')
-</head>
-<body>
-<div class="mainIndex">
+@extends('master')
+@section('title','Описание места '.$place->name)
+@section('content')
+    <div class="mainIndex">
 
-    <h3><a href="/places">Вернуться к списку мест</a></h3>
+        <h3><a href="/places">Вернуться к списку мест</a></h3>
 
-    Наименование:{{$place->name}}<br>
-    Тип:{{$type}}<br>
-    Описание:{{$place->about}}<br>
+        Наименование:{{$place->name}}<br>
+        Тип:{{$type}}<br>
+        Описание:{{$place->about}}<br>
 
-    <h3>Фотографии:</h3><br>
-    @foreach ($photos as $photo)
-        <p><img src="{{Storage::url($photo->filePath)}}" width="255" height="255"></p>
-    @endforeach
-</div>
-</body>
-</html>
+        <h3>Фотографии:</h3><br>
+        @foreach ($photos as $photo)
+            <p><img src="{{Storage::url($photo->filePath)}}" width="255" height="255"></p>
+        @endforeach
+    </div>
+@stop
