@@ -3,9 +3,9 @@
 @section('content')
     <div class="mainIndex">
         <h3>Выберите фотографию для добавления</h3>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="{{route('uploadFormAddPhotoId',$id)}}" method="post" enctype="multipart/form-data">
             @csrf
-            <input type="file" name="image">
+            <input type="file" name="image"><br>
             <button type="submit">Добавить</button>
         </form>
 

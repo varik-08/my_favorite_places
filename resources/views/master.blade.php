@@ -20,14 +20,32 @@
         .main {
             float: left;
         }
+        .active{
+            text-decoration: underline;
+        }
     </style>
 
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script data-require="jquery*" data-semver="2.0.3" src="https://code.jquery.com/jquery.min.js"></script>
+    <script data-require="bootstrap@3.1.1" data-semver="3.1.1"
+            src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <link data-require="bootstrap-css@3.1.1" data-semver="3.1.1" rel="stylesheet"
+          href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+
 </head>
 <body>
+<div class="navbar">
+    <ul class="nav navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link @if(Request::url() == route('places')) active @endif" href="{{route('places')}}">Все места</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @if(Request::url() == route('createPlace')) active @endif" href="{{route('createPlace')}}">Добавить новое место</a>
+        </li>
+    </ul>
+</div>
+
 @yield('content')
 </body>
 </html>

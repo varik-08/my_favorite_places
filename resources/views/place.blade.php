@@ -2,9 +2,6 @@
 @section('title','Описание места '.$place->name)
 @section('content')
     <div class="mainIndex">
-
-        <h3><a href="/places">Вернуться к списку мест</a></h3>
-
         Наименование:{{$place->name}}<br>
         Тип:{{$type}}<br>
         Описание:{{$place->about}}<br>

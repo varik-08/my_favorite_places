@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Type;
 use App\Http\Requests\UserRequest;
-use App\Http\Requests\AddPhotoRequest;
 
 
 class UserController extends Controller
@@ -43,7 +42,7 @@ class UserController extends Controller
         return view('index',compact(['myplaces']));
     }
 
-    public function addPhotos(AddPhotoRequest $request)
+    public function addPhotos(Request $request)
     {
         return redirect('/places/'.$request->input('id').'/photos/add');
     }

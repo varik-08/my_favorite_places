@@ -2,7 +2,7 @@
 @section('title','Добавление нового места')
 @section('content')
     <div class="mainIndex">
-        <form action="create" method="post">
+        <form action="{{route('uploadFormCreatePlace')}}" method="post">
             @csrf
             <h3>Добавить место</h3>
             <div class="main">

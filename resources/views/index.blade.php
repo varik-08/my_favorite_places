@@ -19,7 +19,7 @@
         </div>
         ---------------------------------------------------------------
         <div>
-            <form action="/places/photos/add" method="post">
+            <form action="{{route('addPhotos')}}" method="post">
                 @csrf
                 <h4>Добавить фотографии к месту</h4><br>
                 <div class="main">
@@ -46,8 +46,5 @@
                 </div>
             @endif
         </div>
-        <br><br><br><br>
-        ----------------------------------------------------------------
-        <h3><a href="/places/create">Добавить новое место</a></h3>
     </div>
 @stop

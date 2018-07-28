@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/places', "UserController@index");
-Route::get('/places/create', "UserController@createPlace");
-Route::post('/places/create', "UserController@getCreateForm");
-Route::get('/places/{id}/photos/add','PhotoController@selectPhotosId');
-Route::post('/places/{id}/photos/add','PhotoController@addPhotoId');
-Route::post('/places/photos/add','UserController@addPhotos');
-Route::get('/places/{id}', "UserController@place");
+Route::group([
+    'prefix' => 'places',
+],
+    function () {
+        Route::get('/', "UserController@index")->name('places');
+        Route::get('create', "UserController@createPlace")->name('createPlace');
+        Route::post('create', "UserController@getCreateForm")->name('uploadFormCreatePlace');
+        Route::get('{id}/photos/add', 'PhotoController@selectPhotosId')->name('selectPhotoById');
+        Route::post('{id}/photos/add', 'PhotoController@addPhotoId')->name('uploadFormAddPhotoId');
+        Route::post('photos/add', 'UserController@addPhotos')->name('addPhotos')->middleware('testExistPlace');
+        Route::get('{id}', "UserController@place")->name('aboutAsPlace');
+    });
+
