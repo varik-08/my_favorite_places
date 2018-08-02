@@ -24,3 +24,4 @@ Route::group([
         Route::get('{id}', "UserController@place")->name('aboutAsPlace');
     });
 
+Route::get('/test','UserController@test');

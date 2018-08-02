@@ -26,7 +26,7 @@ class UserRequest extends FormRequest
         return [
             'name'=>'required|not_regex:([0-9]+)|unique:places,name',
             'about'=>'required',
-            'type'=>'required',
+            'type_id'=>'required',
         ];
     }
 

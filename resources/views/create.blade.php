@@ -13,7 +13,7 @@
 
                 <div class="field">
                     <label for="type">Тип</label>
-                    <select name="type" value="{{old('type')}}">
+                    <select name="type_id" value="{{old('type_id')}}">
                         <option disabled>Выберите тип</option>
                         @foreach ($types as $type)
                             <option value="{{$type->id}}">{{$type->name}}</option>;

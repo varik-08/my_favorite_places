@@ -10,7 +10,7 @@ class PhotoController extends Controller
 {
     public function selectPhotosId($id)
     {
-        $photos = Filesplace::where('idPlace',$id)->orderBy('created_at','desc')->get();
+        $photos = Place::find($id)->files()->orderBy('created_at','desc')->get();
         return view('addPhoto', compact(['id','photos']));
     }
 
@@ -18,7 +18,7 @@ class PhotoController extends Controller
     {
         $place = Place::find($id);
         Filesplace::create([
-            'idPlace'=>$id,
+            'place_id'=>$id,
             'fileName'=>$request->file('image')->hashName(),
             'filePath'=>'/'.$place->name.'/'.$request->file('image')->hashName(),
         ]);

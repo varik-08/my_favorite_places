@@ -19,11 +19,11 @@ class UserController extends Controller
         return view('index',compact(['myplaces']));
     }
 
-    public function place($id = null)
+    public function place($id)
     {
-        $photos = Filesplace::where('idPlace',$id)->orderBy('created_at','desc')->get();
-        $place = Place::where('id','=',$id)->first();
-        $type = Type::where('id', '=', $place->type)->value('name');
+        $photos = Place::find($id)->files()->orderBy('created_at','desc')->get();
+        $place = Place::find($id)->first();
+        $type = Place::find($id)->type()->value('name');
         return view('place', compact(['id','photos','place','type']));
     }
 
@@ -35,8 +35,6 @@ class UserController extends Controller
 
     public function getCreateForm(UserRequest $request)
     {
-        //Place::insert(['name'=>$request->input('name'), 'type'=>$request->
-        //input('type'), 'about'=>$request->input('about')]);
         Place::create($request->all());
         $myplaces = Place::all();
         return view('index',compact(['myplaces']));
@@ -45,5 +43,10 @@ class UserController extends Controller
     public function addPhotos(Request $request)
     {
         return redirect()->route('selectPhotoById',$request->input('id'));
+    }
+
+    public function test()
+    {
+        dd(Place::find(1)->type()->get());
     }
 }
