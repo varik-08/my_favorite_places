@@ -11,7 +11,7 @@
                 </tr>
                 @foreach ($myplaces as $place )
                     <tr>
-                        <td><a href="/places/{{$place->id}}">{{$place->name}}</a></td>
+                        <td><a href="{{route('aboutAsPlace',$place->id)}}">{{$place->name}}</a></td>
                         <td>{{$place->typ}}</td>
                     </tr>
                 @endforeach

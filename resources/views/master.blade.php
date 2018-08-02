@@ -38,10 +38,10 @@
 <div class="navbar">
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a class="nav-link @if(Request::url() == route('places')) active @endif" href="{{route('places')}}">Все места</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'places') active @endif" href="{{route('places')}}">Все места</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if(Request::url() == route('createPlace')) active @endif" href="{{route('createPlace')}}">Добавить новое место</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'createPlace') active @endif" href="{{route('createPlace')}}">Добавить новое место</a>
         </li>
     </ul>
 </div>

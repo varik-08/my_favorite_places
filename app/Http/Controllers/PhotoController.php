@@ -23,6 +23,6 @@ class PhotoController extends Controller
             'filePath'=>'/'.$place->name.'/'.$request->file('image')->hashName(),
         ]);
         $request->file('image')->store('/'.$place->name.'/', 'public');
-        return redirect('/places/'.$id.'/photos/add');
+        return redirect()->route('selectPhotoById', $id);
     }
 }

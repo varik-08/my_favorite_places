@@ -44,6 +44,6 @@ class UserController extends Controller
 
     public function addPhotos(Request $request)
     {
-        return redirect('/places/'.$request->input('id').'/photos/add');
+        return redirect()->route('selectPhotoById',$request->input('id'));
     }
 }
