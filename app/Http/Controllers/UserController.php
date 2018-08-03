@@ -22,7 +22,7 @@ class UserController extends Controller
     public function place($id)
     {
         $photos = Place::find($id)->files()->orderBy('created_at','desc')->get();
-        $place = Place::find($id)->first();
+        $place = Place::find($id);
         $type = Place::find($id)->type()->value('name');
         return view('place', compact(['id','photos','place','type']));
     }
@@ -38,11 +38,6 @@ class UserController extends Controller
         Place::create($request->all());
         $myplaces = Place::all();
         return view('index',compact(['myplaces']));
-    }
-
-    public function addPhotos(Request $request)
-    {
-        return redirect()->route('selectPhotoById',$request->input('id'));
     }
 
     public function test()

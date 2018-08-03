@@ -12,7 +12,7 @@ class Place extends Model
 
     public function getTypAttribute()
     {
-        return Place::find($this->type_id)->type()->value('name');
+        return Place::find($this->id)->type()->value('name');
     }
 
     public function files()

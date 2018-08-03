@@ -43,6 +43,9 @@
         <li class="nav-item">
             <a class="nav-link @if(Route::currentRouteName() == 'createPlace') active @endif" href="{{route('createPlace')}}">Добавить новое место</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link @if(Route::currentRouteName() == 'addPhotos') active @endif" href="{{route('addPhotos')}}">Добавить Фотографии к месту</a>
+        </li>
     </ul>
 </div>
 

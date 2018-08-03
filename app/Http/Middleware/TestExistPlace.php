@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Place;
 
 class TestExistPlace
 {
@@ -15,7 +16,9 @@ class TestExistPlace
      */
     public function handle($request, Closure $next)
     {
-        if($request->id == null) return redirect()->route('places');
+        if(Place::count() == 0)
+            return redirect()->route('places');
+
         return $next($request);
     }
 }

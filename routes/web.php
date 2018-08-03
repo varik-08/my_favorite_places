@@ -20,7 +20,7 @@ Route::group([
         Route::post('create', "UserController@getCreateForm")->name('uploadFormCreatePlace');
         Route::get('{id}/photos/add', 'PhotoController@selectPhotosId')->name('selectPhotoById');
         Route::post('{id}/photos/add', 'PhotoController@addPhotoId')->name('uploadFormAddPhotoId');
-        Route::post('photos/add', 'UserController@addPhotos')->name('addPhotos')->middleware('testExistPlace');
+        Route::get('photos/add', 'PhotoController@addPhotos')->name('addPhotos')->middleware('testExistPlace');
         Route::get('{id}', "UserController@place")->name('aboutAsPlace');
     });
 
