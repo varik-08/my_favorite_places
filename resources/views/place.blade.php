@@ -3,7 +3,7 @@
 @section('content')
     <div class="mainIndex">
         Наименование:{{$place->name}}<br>
-        Тип:{{$type}}<br>
+        Тип:{{$place->typ}}<br>
         Описание:{{$place->about}}<br>
 
         <h3>Фотографии:</h3><br>

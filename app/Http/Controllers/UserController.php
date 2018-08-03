@@ -23,8 +23,7 @@ class UserController extends Controller
     {
         $photos = Place::find($id)->files()->orderBy('created_at','desc')->get();
         $place = Place::find($id);
-        $type = Place::find($id)->type()->value('name');
-        return view('place', compact(['id','photos','place','type']));
+        return view('place', compact(['photos','place']));
     }
 
     public function createPlace()
