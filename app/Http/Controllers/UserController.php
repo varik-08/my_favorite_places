@@ -39,9 +39,4 @@ class UserController extends Controller
         $myplaces = Place::all();
         return view('index',compact(['myplaces']));
     }
-
-    public function test()
-    {
-        dd(Place::find(1)->type()->get());
-    }
 }
