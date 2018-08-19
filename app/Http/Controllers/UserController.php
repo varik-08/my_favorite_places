@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Opinion;
 use App\Place;
 use Illuminate\Http\Request;
 use App\Filesplace;
@@ -37,5 +38,12 @@ class UserController extends Controller
         Place::create($request->all());
         $myplaces = Place::all();
         return view('index',compact(['myplaces']));
+    }
+
+    public function test()
+    {
+        //$opinion = Opinion::find(3)->opinionable;
+        $countLike = Place::find(1)->rating;
+        dd($countLike);
     }
 }

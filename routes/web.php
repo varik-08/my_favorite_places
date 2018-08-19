@@ -16,12 +16,14 @@ Route::group([
 ],
     function () {
         Route::get('/', "UserController@index")->name('places');
-        Route::get('create', "UserController@createPlace")->name('createPlace');
-        Route::post('create', "UserController@getCreateForm")->name('uploadFormCreatePlace');
+        Route::get('rating','OpinionController@rating')->name('allRating');
+        Route::get('create', 'UserController@createPlace')->name('createPlace');
+        Route::post('create', 'UserController@getCreateForm')->name('uploadFormCreatePlace');
         Route::get('{id}/photos/add', 'PhotoController@selectPhotosId')->name('selectPhotoById');
         Route::post('{id}/photos/add', 'PhotoController@addPhotoId')->name('uploadFormAddPhotoId');
         Route::get('photos/add', 'PhotoController@addPhotos')->name('addPhotos')->middleware('testExistPlace');
-        Route::get('{id}', "UserController@place")->name('aboutAsPlace');
+        Route::get('{id}', 'UserController@place')->name('aboutAsPlace');
     });
 
-
+Route::get('/test','UserController@test');
+Route::get('addOpinion/{idPlace}/{id}/{typeEssence}/{typeOpinion}','OpinionController@addOpinion')->name('addOpinion');

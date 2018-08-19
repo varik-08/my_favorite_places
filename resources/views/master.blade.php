@@ -46,6 +46,9 @@
         <li class="nav-item">
             <a class="nav-link @if(Route::currentRouteName() == 'addPhotos') active @endif" href="{{route('addPhotos')}}">Добавить Фотографии к месту</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link @if(Route::currentRouteName() == 'allRating') active @endif" href="{{route('allRating')}}">Рейтинг по всем местам</a>
+        </li>
     </ul>
 </div>
 
