@@ -12,7 +12,7 @@
                 @foreach ($myplaces as $place )
                     <tr>
                         <td>{{$place->name}}</td>
-                        <td>{{$place->overallRating}}</td>
+                        <td>{{$place->overallRating()}}</td>
                     </tr>
                 @endforeach
             </table>

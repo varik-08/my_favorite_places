@@ -25,7 +25,7 @@ class OpinionController extends Controller
 
     public function rating()
     {
-        $myplaces = Place::all()->sortByDesc('overallRating');
+        $myplaces = Place::all()->sortByDesc('overRating');
         return view('rating',compact(['myplaces']));
     }
 }

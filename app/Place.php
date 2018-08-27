@@ -11,25 +11,25 @@ class Place extends Model
     protected $guarded = [];
     public $timestamps = false;
 
-    public function getTypAttribute()
+    public function  rating()
     {
-        return Place::find($this->id)->type()->value('name');
+        return $this->opinion()->countLikeOrDislike('1') -
+            $this->opinion()->countLikeOrDislike('0');
     }
-
-    public function  getRatingAttribute()
+    public function overallRating()
     {
-        return Place::find($this->id)->opinion->where('type','1')->count() -
-            Place::find($this->id)->opinion->where('type','0')->count();
-    }
-    public function getOverallRatingAttribute()
-    {
-        $photos = Place::find($this->id)->files()->get();
+        $photos = $this->files;
         $ratingPhotos = 0;
         foreach ($photos as $photo)
         {
-            $ratingPhotos += $photo->rating;
+            $ratingPhotos += $photo->rating();
         }
-        return Place::find($this->id)->rating + $ratingPhotos;
+        return$this->rating() + $ratingPhotos;
+    }
+
+    public function getOverRatingAttribute()
+    {
+        return $this->overallRating();
     }
 
     public function files()

@@ -9,6 +9,12 @@ class Filesplace extends Model
 {
     protected $guarded = [];
 
+    public function rating()
+    {
+        return $this->opinion()->countLikeOrDislike('1') -
+            $this->opinion()->countLikeOrDislike('0');
+    }
+
     public function place()
     {
         return $this->belongsTo(Place::class);
@@ -18,11 +24,4 @@ class Filesplace extends Model
     {
         return $this->morphMany(Opinion::class,'opinionable');
     }
-
-    public function  getRatingAttribute()
-    {
-        return Filesplace::find($this->id)->opinion->where('type','1')->count() -
-            Filesplace::find($this->id)->opinion->where('type','0')->count();
-    }
-
 }
