@@ -10,9 +10,9 @@ class OpinionController extends Controller
 {
     public function addOpinion($idPlace, $id, $typeEssence, $typeOpinion)
     {
-        if($typeEssence=='Place'){
+        if ($typeEssence == 'Place') {
             $essence = Place::find($id);
-        }else{
+        } else {
             $essence = Filesplace::find($id);
         }
 
@@ -20,12 +20,18 @@ class OpinionController extends Controller
             'type' => $typeOpinion,
         ]);
 
-        return redirect()->route('aboutAsPlace',$idPlace);
+        return redirect()->route('aboutAsPlace', $idPlace);
     }
 
     public function rating()
     {
-        $myplaces = Place::all()->sortByDesc('overRating');
-        return view('rating',compact(['myplaces']));
+        $myplaces = Place::all();
+        foreach ($myplaces as $place)
+        {
+           $place->setAttribute('rating',$place->overAllRating());
+        }
+        $myplaces = $myplaces->sortByDesc('rating');
+
+        return view('rating', compact(['myplaces']));
     }
 }

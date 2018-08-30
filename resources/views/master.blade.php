@@ -38,16 +38,23 @@
 <div class="navbar">
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'places') active @endif" href="{{route('places')}}">Все места</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'places') active @endif" href="{{route('places')}}">@lang('lan.navBar.allPlace')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'createPlace') active @endif" href="{{route('createPlace')}}">Добавить новое место</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'createPlace') active @endif" href="{{route('createPlace')}}">@lang('lan.navBar.addNewPlace')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'addPhotos') active @endif" href="{{route('addPhotos')}}">Добавить Фотографии к месту</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'addPhotos') active @endif" href="{{route('addPhotos')}}">@lang('lan.navBar.addPhotoToThePlace')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'allRating') active @endif" href="{{route('allRating')}}">Рейтинг по всем местам</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'allRating') active @endif" href="{{route('allRating')}}">@lang('lan.navBar.ratingForAllPlace')</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">@lang('lan.navBar.selectLanguages')<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{route('setLang','ru')}}">@lang('lan.navBar.ru')</a></li>
+                <li><a href="{{route('setLang','en')}}">@lang('lan.navBar.en')</a></li>
+            </ul>
         </li>
     </ul>
 </div>

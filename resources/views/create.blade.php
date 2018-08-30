@@ -1,34 +1,34 @@
 @extends('master')
-@section('title','Добавление нового места')
+@section('title', __('lan.titles.addNewPlace'))
 @section('content')
     <div class="mainIndex">
         <form action="{{route('uploadFormCreatePlace')}}" method="post">
             @csrf
-            <h3>Добавить место</h3>
+            <h3>@lang('lan.create.addAPlace')</h3>
             <div class="main">
                 <div class="field">
-                    <label for="name">Имя</label>
+                    <label for="name">@lang('lan.create.name')</label>
                     <input type="text" name="name" value="{{old('name')}}"><br>
                 </div>
 
                 <div class="field">
-                    <label for="type">Тип</label>
+                    <label for="type">@lang('lan.create.type')</label>
                     <select name="type_id" value="{{old('type_id')}}">
-                        <option disabled>Выберите тип</option>
+                        <option disabled>@lang('lan.create.selectType')</option>
                         @foreach ($types as $type)
-                            <option value="{{$type->id}}">{{$type->name}}</option>;
+                            <option value="{{$type->id}}">{{$type->selectType()}}</option>;
                         @endforeach
                     </select>
 
                 </div>
 
                 <div class="field">
-                    <label for="about">Описание</label>
+                    <label for="about">@lang('lan.create.description')</label>
                     <textarea name="about">{{{ old('about') }}}</textarea>
                 </div>
 
                 <br>
-                <button type="submit">Сохранить</button>
+                <button type="submit">@lang('lan.create.save')</button>
             </div>
         </form>
 

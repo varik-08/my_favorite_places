@@ -11,8 +11,8 @@ class Filesplace extends Model
 
     public function rating()
     {
-        return $this->opinion()->countLikeOrDislike('1') -
-            $this->opinion()->countLikeOrDislike('0');
+        return $this->opinion()->countLike() -
+            $this->opinion()->countDislike();
     }
 
     public function place()

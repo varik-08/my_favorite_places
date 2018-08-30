@@ -8,9 +8,14 @@ class Opinion extends Model
 {
     protected $guarded = [];
 
-    public function scopeCountLikeOrDislike($query, $type)
+    public function scopeCountLike($query)
     {
-        return $query->where('type',$type)->count();
+        return $query->where('type',1)->count();
+    }
+
+    public function scopeCountDislike($query)
+    {
+        return $query->where('type',0)->count();
     }
 
     public function opinionable()

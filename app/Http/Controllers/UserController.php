@@ -7,9 +7,11 @@ use App\Place;
 use Illuminate\Http\Request;
 use App\Filesplace;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use App\Type;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\App;
 
 
 class UserController extends Controller
@@ -40,13 +42,16 @@ class UserController extends Controller
         return view('index', compact(['myplaces']));
     }
 
-    public function test()
-    {
-        dd( Place::find(1)->OverRating);
-    }
-
     public function redir()
     {
         return redirect(route('places'));
+    }
+
+    public function setLang($locale)
+    {
+        if (in_array($locale, \Config::get('app.locales'))) {
+            Session::put('locale', $locale);
+        }
+        return redirect()->back();
     }
 }

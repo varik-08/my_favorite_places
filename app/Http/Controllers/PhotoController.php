@@ -29,7 +29,7 @@ class PhotoController extends Controller
         Filesplace::create([
             'place_id' => $id,
             'fileName' => $request->file('image')->hashName(),
-            'filePath' => '/' . $place->name . '/' . $request->file('image')->hashName(),
+            'filePath' => $place->name . '/' . $request->file('image')->hashName(),
         ]);
         $request->file('image')->store('/' . $place->name . '/', 'public');
         return redirect()->route('selectPhotoById', $id);

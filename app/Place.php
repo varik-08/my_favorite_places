@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\Type;
 use App\Opinion;
+use Illuminate\Support\Facades\App;
 
 class Place extends Model
 {
@@ -13,8 +14,8 @@ class Place extends Model
 
     public function  rating()
     {
-        return $this->opinion()->countLikeOrDislike('1') -
-            $this->opinion()->countLikeOrDislike('0');
+        return $this->opinion()->countLike() -
+            $this->opinion()->countDislike();
     }
     public function overallRating()
     {
@@ -27,11 +28,6 @@ class Place extends Model
         return$this->rating() + $ratingPhotos;
     }
 
-    public function getOverRatingAttribute()
-    {
-        return $this->overallRating();
-    }
-
     public function files()
     {
         return $this->hasMany(Filesplace::class);
@@ -40,6 +36,20 @@ class Place extends Model
     public function type()
     {
         return $this->belongsTo(Type::class);
+    }
+
+    public function selectType()
+    {
+        switch (App::getLocale())
+        {
+            case "ru":
+                $name = $this->type()->value('name');
+                break;
+            case "en":
+                $name = $this->type()->value('nameEn');
+                break;
+        }
+        return $name;
     }
 
     public function opinion()

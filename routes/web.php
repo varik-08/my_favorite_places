@@ -25,5 +25,10 @@ Route::group([
         Route::get('{id}', 'UserController@place')->name('aboutAsPlace');
     });
 Route::get('/','UserController@redir');
-Route::get('/test','UserController@test');
 Route::get('addOpinion/{idPlace}/{id}/{typeEssence}/{typeOpinion}','OpinionController@addOpinion')->name('addOpinion');
+
+Route::get('/filesplace/{id}/download','FilesplaceController@download')->name('downloadPhoto');
+Route::resource('filesplace','FilesplaceController')->only(['destroy']);
+
+Route::get('/setLang/{id}','UserController@setLang')->name('setLang');
+
