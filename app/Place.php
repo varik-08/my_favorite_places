@@ -14,8 +14,8 @@ class Place extends Model
 
     public function  rating()
     {
-        return $this->opinion()->countLike() -
-            $this->opinion()->countDislike();
+        return $this->opinion()->countLike()->count() -
+            $this->opinion()->countDislike()->count();
     }
     public function overallRating()
     {

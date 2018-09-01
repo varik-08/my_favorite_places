@@ -31,7 +31,7 @@ class FilesplaceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +42,7 @@ class FilesplaceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Filesplace  $filesplace
+     * @param  \App\Filesplace $filesplace
      * @return \Illuminate\Http\Response
      */
     public function show(Filesplace $filesplace)
@@ -53,7 +53,7 @@ class FilesplaceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Filesplace  $filesplace
+     * @param  \App\Filesplace $filesplace
      * @return \Illuminate\Http\Response
      */
     public function edit(Filesplace $filesplace)
@@ -64,8 +64,8 @@ class FilesplaceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Filesplace  $filesplace
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Filesplace $filesplace
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Filesplace $filesplace)
@@ -76,7 +76,7 @@ class FilesplaceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Filesplace  $filesplace
+     * @param  \App\Filesplace $filesplace
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -85,14 +85,13 @@ class FilesplaceController extends Controller
         $filesplace->opinion()->delete();
         Storage::delete($filesplace->filePath);
         $filesplace->delete();
-        return redirect()->route('aboutAsPlace',$filesplace->place_id);
+        return redirect()->route('aboutAsPlace', $filesplace->place_id);
     }
 
     public function download($id)
     {
         $filesplace = Filesplace::find($id);
-        $path = str_replace('/', '\\', storage_path($filesplace->filePath));
-        $path = str_replace('\\storage', '\\storage\\app\\public', $path);
+        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix() . $filesplace->filePath;
         return response()->download($path);
     }
 }

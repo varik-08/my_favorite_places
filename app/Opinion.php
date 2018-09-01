@@ -10,12 +10,12 @@ class Opinion extends Model
 
     public function scopeCountLike($query)
     {
-        return $query->where('type',1)->count();
+        return $query->where('type',1);
     }
 
     public function scopeCountDislike($query)
     {
-        return $query->where('type',0)->count();
+        return $query->where('type',0);
     }
 
     public function opinionable()
