@@ -49,7 +49,7 @@ class UserController extends Controller
 
     public function setLang($locale)
     {
-        if (in_array($locale, \Config::get('app.locales'))) {
+        if (in_array($locale, config('app.locales'))) {
             Session::put('locale', $locale);
         }
         return redirect()->back();

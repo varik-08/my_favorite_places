@@ -24,7 +24,7 @@ Route::group([
         Route::get('photos/add', 'PhotoController@addPhotos')->name('addPhotos')->middleware('testExistPlace');
         Route::get('{id}', 'UserController@place')->name('aboutAsPlace');
     });
-Route::get('/','UserController@redir');
+Route::redirect('/', '/places');
 Route::get('addOpinion/{idPlace}/{id}/{typeEssence}/{typeOpinion}','OpinionController@addOpinion')->name('addOpinion');
 
 Route::get('/filesplace/{id}/download','FilesplaceController@download')->name('downloadPhoto');
