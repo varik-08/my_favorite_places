@@ -49,6 +49,7 @@ return [
         'overallRating' => 'Общий рейтинг: ',
         'estimate' => 'Оценить: ',
         'photos' => 'Фотографии:',
+        'download' => 'Скачать',
         'delete' => 'Удалить',
     ],
     'rating' => [

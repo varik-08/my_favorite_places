@@ -28,7 +28,7 @@
                                 src="{{Storage::url('image/dislike.png')}}" width="20" height="20"></a>
                 </div>
                 @lang('lan.place.rating'){{$photo->rating()}}<br>
-                <a href="{{route('downloadPhoto',[$photo->id])}}" target="_blank">Скачать</a>
+                <a href="{{route('downloadPhoto',[$photo->id])}}" target="_blank">@lang('lan.place.download')</a>
                 <form action="{{route('filesplace.destroy',[$photo->id])}}" method="POST">
                     @method('DELETE')
                     @csrf

@@ -2,7 +2,7 @@
 @section('title', __('lan.titles.addNewPlace'))
 @section('content')
     <div class="mainIndex">
-        <form action="{{route('uploadFormCreatePlace')}}" method="post">
+        <form action="{{route('places.store')}}" method="post">
             @csrf
             <h3>@lang('lan.create.addAPlace')</h3>
             <div class="main">

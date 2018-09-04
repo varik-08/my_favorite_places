@@ -49,6 +49,7 @@ return[
         'overallRating' => 'Overall rating: ',
         'estimate' => 'Estimate: ',
         'photos' => 'Photos:',
+        'download' => 'Download',
         'delete' => 'Delete',
     ],
     'rating' => [

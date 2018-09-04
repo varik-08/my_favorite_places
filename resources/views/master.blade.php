@@ -38,10 +38,10 @@
 <div class="navbar">
     <ul class="nav navbar-nav">
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'places') active @endif" href="{{route('places')}}">@lang('lan.navBar.allPlace')</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'places.index') active @endif" href="{{route('places.index')}}">@lang('lan.navBar.allPlace')</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if(Route::currentRouteName() == 'createPlace') active @endif" href="{{route('createPlace')}}">@lang('lan.navBar.addNewPlace')</a>
+            <a class="nav-link @if(Route::currentRouteName() == 'places.create') active @endif" href="{{route('places.create')}}">@lang('lan.navBar.addNewPlace')</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if(Route::currentRouteName() == 'addPhotos') active @endif" href="{{route('addPhotos')}}">@lang('lan.navBar.addPhotoToThePlace')</a>

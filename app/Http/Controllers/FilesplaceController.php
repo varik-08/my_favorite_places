@@ -85,13 +85,8 @@ class FilesplaceController extends Controller
         $filesplace->opinion()->delete();
         Storage::delete($filesplace->filePath);
         $filesplace->delete();
-        return redirect()->route('aboutAsPlace', $filesplace->place_id);
+        return redirect()->route('places.show', $filesplace->place_id);
     }
 
-    public function download($id)
-    {
-        $filesplace = Filesplace::find($id);
-        $path = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix() . $filesplace->filePath;
-        return response()->download($path);
-    }
+
 }

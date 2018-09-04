@@ -43,10 +43,10 @@ class Place extends Model
         switch (App::getLocale())
         {
             case "ru":
-                $name = $this->type()->value('name');
+                $name = $this->type->name;
                 break;
             case "en":
-                $name = $this->type()->value('nameEn');
+                $name = $this->type->nameEn;
                 break;
         }
         return $name;

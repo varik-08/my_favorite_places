@@ -20,7 +20,7 @@ class OpinionController extends Controller
             'type' => $typeOpinion,
         ]);
 
-        return redirect()->route('aboutAsPlace', $idPlace);
+        return redirect()->route('places.show', $idPlace);
     }
 
     public function rating()
