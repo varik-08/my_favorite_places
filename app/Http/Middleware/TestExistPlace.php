@@ -17,7 +17,7 @@ class TestExistPlace
     public function handle($request, Closure $next)
     {
         if(Place::count() == 0)
-            return redirect()->route('places');
+            return redirect()->route('places.index');
 
         return $next($request);
     }

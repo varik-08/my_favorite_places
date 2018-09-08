@@ -10,9 +10,9 @@
             @lang('lan.place.overallRating'){{$place->overallRating()}}<br>
             @lang('lan.place.estimate')
             <a href="{{route('addOpinion',[$place->id, $place->id, 'Place', '1'])}}"><img
-                        src="{{Storage::url('image/like.png')}}" width="15" height="15"></a>
+                        src="/image/like.png" width="15" height="15"></a>
             <a href="{{route('addOpinion',[$place->id, $place->id, 'Place', '0'])}}"><img
-                        src="{{Storage::url('image/dislike.png')}}" width="20" height="20"></a>
+                        src="/image/dislike.png" width="20" height="20"></a>
             <br>
         </div>
         <h3>@lang('lan.place.photos')</h3><br>
@@ -23,9 +23,9 @@
                 <div>
                     @lang('lan.place.estimate')
                     <a href="{{route('addOpinion',[$place->id, $photo->id, 'Photo', '1'])}}"><img
-                                src="{{Storage::url('image/like.png')}}" width="15" height="15"></a>
+                                src="/image/like.png" width="15" height="15"></a>
                     <a href="{{route('addOpinion',[$place->id, $photo->id, 'Photo', '0'])}}"><img
-                                src="{{Storage::url('image/dislike.png')}}" width="20" height="20"></a>
+                                src="/image/dislike.png" width="20" height="20"></a>
                 </div>
                 @lang('lan.place.rating'){{$photo->rating()}}<br>
                 <a href="{{route('downloadPhoto',[$photo->id])}}" target="_blank">@lang('lan.place.download')</a>
